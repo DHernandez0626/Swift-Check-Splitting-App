@@ -20,7 +20,7 @@ struct ContentView: View {
     }
     
     var grandTotal: Double {
-        let peopleCount = Double(numberOfPeople + 2)
+        _ = Double(numberOfPeople + 2)
         let tipSelection = Double(tipPercentage)
         let tipValue = checkAmount / 100 * tipSelection
         let grandTotal = checkAmount + tipValue
@@ -58,6 +58,7 @@ struct ContentView: View {
                 
                 Section("Grand total") {
                     Text(grandTotal, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .foregroundStyle(tipPercentage < 1 ? .red : .black)
                 }
             }
             .navigationTitle("WeSplit")
